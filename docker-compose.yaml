@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+
+  wikijs:
+    image: lscr.io/linuxserver/wikijs:latest
+    container_name: wikijs
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Mexico_City
+    volumes:
+      - ./wiki/config:/config
+      - ./wiki/db-data:/data
+    ports:
+      - 4200:3000
+    restart: unless-stopped
